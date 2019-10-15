@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block conteiner %}
+  <div class="bs-docs-section">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h1 id="containers">CreativeDrive</h1>
+            </div>
+            <div class="bs-component">
+              <div class="jumbotron">
+                <h1 class="display-3">Seja bem-vindo!</h1>
+                <p class="lead">Etapa do processo seletivo para a vaga de Desenvolvedor Python, que tem como o objetivo verificar o fit técnico do candidato.</p>
+                <hr class="my-4">
+                  {% if user.is_authenticated %}
+                        {{ user.name }}
+                      <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="{% url 'file_upload' %}">Clique para upload</a><br>
+                      </p>
+                      <p class="lead">
+                          <a class="btn btn-primary btn-lg" href="{% url 'logout' %}">Logout</a>
+                      </p>
+                    {% else %}
+                        <p>Você não está logado. É necessário logar para poder fazer o Upload do arquivo.</p>
+                        <p class="lead">
+                          <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Clique para Logar</a>
+                        </p>
+                    {% endif %}
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
